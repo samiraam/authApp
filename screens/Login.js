@@ -1,7 +1,7 @@
 import React, {useState} from "react";
-import {View, Text, TextInput, Button, Stylesheet} from 'react-native'
+import {View, Text, TextInput, Button, StyleSheet} from 'react-native'
 
-const Login=()=>{
+const Login=({navigation})=>{
     const [username, setUsername]=useState("")
     const [password, setPassword]=useState("")
     const Handle=async()=>{
@@ -16,9 +16,13 @@ const Login=()=>{
                 credentials:"omit"
             })
             const data=await pergjigjja.json()
-            console.log(data)
-
+            if(data?.accessToken){
+                navigation.navigate("Welcome",{
+                    username:username
+                })
         }
+     }
+
 catch(err){
 
     }
